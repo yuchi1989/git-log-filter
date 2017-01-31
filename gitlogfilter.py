@@ -27,7 +27,11 @@ def filter(filename1,keywords):
 				if commit != "":
 					commits.append(commit)
 				commit = content[i]
-
+			elif "commit" in content[i] and "Merge" in content[i+1] and "Author" in content[i+2]:
+				flag = True
+				if commit != "":
+					commits.append(commit)
+				commit = content[i]
 			else:
 				if flag:
 					commit = commit + content[i]
